@@ -11,6 +11,7 @@
       margin: 0;
       height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       background: linear-gradient(180deg, rgba(255, 208, 229, 1) 0%, rgba(255, 232, 242, 1) 36%, rgba(255, 255, 255, 1) 100%);
@@ -30,6 +31,13 @@
     .image.active {
       opacity: 1;
     }
+    #text-container {
+        margin-top: 20px;
+        font-size: 1.5rem;
+        font-family: Arial, sans-serif;
+        color: #333;
+        text-align: center;
+    }    
     #valentineSection {
       display: none;
       flex-direction: column;
@@ -44,9 +52,10 @@
     <img src="./images/image3.gif" class="image" alt="Image 3">
     <img src="./images/image4.gif" class="image" alt="Image 4">
   </div>
+  <div id="text-container"></div>
   <div id="valentineSection">
     <img id="imageDisplay" src="./images/image1.gif" alt="Cute kitten with flowers" class="rounded-md h-[300px]" style="object-fit: cover;" />
-    <h2 id="valentineQuestion" class="text-4xl font-bold italic text-[#bd1e59] my-4">Will you be my Valentine?</h2>
+    <h2 id="valentineQuestion" class="text-4xl font-bold italic text-[#bd1e59] my-4">Will ppl be my Valentine?</h2>
     <div class="flex gap-4 pt-[20px] items-center" id="responseButtons">
       <button id="yesButton" class="bounce2 bg-green-500 text-white px-4 py-2 rounded-md text-[20px] font-medium transition hover:bg-green-400 min-h-12 min-w-[75px]">Yes</button>
       <button id="noButton" class="bg-red-500 text-white px-4 py-2 rounded-md text-[20px] font-medium transition hover:bg-red-700 min-h-12 min-w-[75px]">No</button>
@@ -55,22 +64,32 @@
   <script>
     const valentineSection = document.getElementById('valentineSection');
     const images = document.querySelectorAll('.image');
+    const imageContainer = document.getElementById('image-container');
+    const textContainer = document.getElementById('text-container');
+    const texts = [
+                "Hello ppl!!!", 
+                "Ppl apologize for the delay", 
+                "Ppl want to surprise ppl with this", 
+                "I hope ppl like it"
+    ];    
+
     let index = 0;
 
     function showImage() {
+        if (index === images.length) {
+            clearInterval(imageInterval);
+            imageContainer.style.display = 'none';
+            textContainer.style.display = 'none';
+            valentineSection.style.display = 'flex';
+            return;
+        }
         images.forEach(img => img.classList.remove('active'));
         images[index].classList.add('active');
-        if (index < images.length - 1) {
-            images[index].classList.add('active'); // Show only up to the fourth image
-        }   
+        textContainer.textContent = texts[index];
         index++;
-        if (index >= 4) {
-            clearInterval(imageInterval); // Stop after the last image
-            valentineSection.style.display = 'flex';
-        }
     }
 
-    const imageInterval = setInterval(showImage, 1500);
+    const imageInterval = setInterval(showImage, 2000);
 
     const yesButton = document.getElementById('yesButton');
     const noButton = document.getElementById('noButton');
@@ -110,7 +129,7 @@
 
     yesButton.addEventListener('click', () => {
       imageDisplay.src = './images/image7.gif'; // Change to image7.gif
-      valentineQuestion.textContent = "Yayyy!! :3";
+      valentineQuestion.textContent = "Yayyy!!! I knew you gonna say yessss";
       responseButtons.style.display = 'none';
       confetti();
     });
