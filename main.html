@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Delay Example</title>
+  <title>Valentine?</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.skypack.dev/canvas-confetti"></script>
   <style>
@@ -65,13 +65,14 @@
 <body>
   <div id="image-container">
     <img src="./images/hello.gif" class="image" alt="Image 1">
-    <img src="./images/image2.gif" class="image" alt="Image 2">
-    <img src="./images/image3.gif" class="image" alt="Image 3">
-    <img src="./images/image4.gif" class="image" alt="Image 4">
+    <img src="./images/apologise.gif" class="image" alt="Image 2">
+    <img src="./images/thinking.gif" class="image" alt="Image 3">
+    <img src="./images/working.gif" class="image" alt="Image 4">
+    <img src="./images/like.gif" class="image" alt="Image 5">
   </div>
   <div id="text-container"></div>
   <div id="valentineSection">
-    <img id="imageDisplay" src="./images/image1.gif" alt="Cute kitten with flowers" class="rounded-md h-[300px]" style="object-fit: cover;" />
+    <img id="imageDisplay" src="./images/valentine.gif" alt="Cute kitten with flowers" class="rounded-md h-[300px]" style="object-fit: cover;" />
     <h2 id="valentineQuestion" class="text-4xl font-bold italic text-[#bd1e59] my-4">Will ppl be my Valentine?</h2>
     <div class="flex gap-4 pt-[20px] items-center" id="responseButtons">
       <button id="yesButton" class="bounce2 bg-green-500 text-white px-4 py-2 rounded-md text-[20px] font-medium transition hover:bg-green-400 min-h-12 min-w-[75px]">Yes</button>
@@ -85,7 +86,8 @@
     const textContainer = document.getElementById('text-container');
     const texts = [
                 "Hello ppl!!!", 
-                "Ppl apologize for the delay", 
+                "Ppl apologize for the delay",
+                "Ppl always thinking of ppl",
                 "Ppl want to surprise ppl with this", 
                 "I hope ppl like it"
     ];    
@@ -106,7 +108,7 @@
         index++;
     }
 
-    const imageInterval = setInterval(showImage, 2000);
+    const imageInterval = setInterval(showImage, 3900);
 
     const yesButton = document.getElementById('yesButton');
     const noButton = document.getElementById('noButton');
@@ -145,7 +147,7 @@
     });
 
     yesButton.addEventListener('click', () => {
-      imageDisplay.src = './images/image7.gif'; // Change to image7.gif
+      imageDisplay.src = './images/image7.gif';
       valentineQuestion.textContent = "Yayyy!!! I knew you gonna say yessss";
       responseButtons.style.display = 'none';
       confetti();
